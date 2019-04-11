@@ -1,0 +1,30 @@
+{
+    "name": "chubbyphp/chubbyphp-slim-psr15",
+    "description": "A slim psr15 adapter for middleware and request handler.",
+    "keywords": ["chubbyphp", "slim", "psr-15", "adapter", "middleware", "request-handler"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Dominik Zogg",
+            "email": "dominik.zogg@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^7.2",
+        "psr/http-message": "^1.0.1",
+        "psr/http-server-middleware": "^1.0.1"
+    },
+    "require-dev": {
+        "chubbyphp/chubbyphp-mock": "^1.4",
+        "phpunit/phpunit": "^8.1",
+        "phploc/phploc": "^5.0"
+    },
+    "autoload": {
+        "psr-4": { "Chubbyphp\\SlimPsr15\\": "src/" }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    }
+}
