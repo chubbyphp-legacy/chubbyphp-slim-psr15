@@ -14,7 +14,7 @@ A slim psr15 adapter for middleware and request handler.
 
 ## Requirements
 
- * php: ^7.2
+ * php: ^7.0
  * psr/http-message: ^1.0.1
  * psr/http-server-middleware: ^1.0.1
 
