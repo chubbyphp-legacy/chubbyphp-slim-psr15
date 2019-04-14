@@ -19,7 +19,7 @@ final class RequestHandlerAdapterTest extends TestCase
 {
     use MockByCallsTrait;
 
-    public function testInvoke(): void
+    public function testInvoke()
     {
         /** @var ServerRequestInterface|MockObject $request */
         $request = $this->getMockByCalls(ServerRequestInterface::class);

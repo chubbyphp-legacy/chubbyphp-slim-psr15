@@ -21,7 +21,7 @@ final class MiddlewareAdapterTest extends TestCase
 {
     use MockByCallsTrait;
 
-    public function testHandle(): void
+    public function testHandle()
     {
         /** @var ServerRequestInterface|MockObject $request */
         $request = $this->getMockByCalls(ServerRequestInterface::class);
