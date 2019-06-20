@@ -15,6 +15,7 @@ A slim psr15 adapter for middleware and request handler.
 ## Requirements
 
  * php: ^7.0
+ * psr/container: ^1.0
  * psr/http-message: ^1.0.1
  * psr/http-server-middleware: ^1.0.1
 
@@ -23,7 +24,7 @@ A slim psr15 adapter for middleware and request handler.
 Through [Composer](http://getcomposer.org) as [chubbyphp/chubbyphp-slim-psr15][1].
 
 ```sh
-composer require chubbyphp/chubbyphp-slim-psr15 "^1.0"
+composer require chubbyphp/chubbyphp-slim-psr15 "^1.1"
 ```
 
 ## Usage
@@ -37,12 +38,33 @@ declare(strict_types=1);
 
 namespace App;
 
-use App\Middleware\Pst15Middleware;
+use App\Middleware\Psr15Middleware;
 use Chubbyphp\SlimPsr15\MiddlewareAdapter;
 use Slim\App;
 
 $app = new App();
 $app->add(new MiddlewareAdapter(new Psr15Middleware()));
+```
+
+### Lazy Middleware adapter
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace App;
+
+use App\Middleware\Psr15Middleware;
+use Chubbyphp\SlimPsr15\LazyMiddlewareAdapter;
+use Psr\Container\ContainerInterface;
+use Slim\App;
+
+/** @var ContainerInterface $container */
+$container = ...;
+
+$app = new App();
+$app->add(new LazyMiddlewareAdapter($container, Psr15Middleware::class));
 ```
 
 ### RequestHandler adapter
@@ -60,6 +82,27 @@ use Slim\App;
 
 $app = new App();
 $app->get('/', new RequestHandlerAdapter(new Psr15RequestHandler()));
+```
+
+### Lazy RequestHandler adapter
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace App;
+
+use App\RequestHandler\Psr15RequestHandler;
+use Chubbyphp\SlimPsr15\LazyRequestHandlerAdapter;
+use Psr\Container\ContainerInterface;
+use Slim\App;
+
+/** @var ContainerInterface $container */
+$container = ...;
+
+$app = new App();
+$app->get('/', new LazyRequestHandlerAdapter($container, Psr15RequestHandler::class));
 ```
 
 ## Copyright

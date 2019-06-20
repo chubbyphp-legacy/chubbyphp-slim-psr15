@@ -7,17 +7,18 @@ namespace Chubbyphp\Tests\SlimPsr15;
 use Chubbyphp\Mock\Argument\ArgumentInstanceOf;
 use Chubbyphp\Mock\Call;
 use Chubbyphp\Mock\MockByCallsTrait;
-use Chubbyphp\SlimPsr15\MiddlewareAdapter;
+use Chubbyphp\SlimPsr15\LazyMiddlewareAdapter;
 use Chubbyphp\SlimPsr15\MiddlewareRequestHandlerAdapter;
 use PHPUnit\Framework\TestCase;
+use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 
 /**
- * @covers \Chubbyphp\SlimPsr15\MiddlewareAdapter
+ * @covers \Chubbyphp\SlimPsr15\LazyMiddlewareAdapter
  */
-final class MiddlewareAdapterTest extends TestCase
+final class LazyMiddlewareAdapterTest extends TestCase
 {
     use MockByCallsTrait;
 
@@ -51,7 +52,12 @@ final class MiddlewareAdapterTest extends TestCase
                 ),
         ]);
 
-        $adapter = new MiddlewareAdapter($middleware);
+        /** @var ContainerInterface|MockObject $container */
+        $container = $this->getMockByCalls(ContainerInterface::class, [
+            Call::create('get')->with('serviceId')->willReturn($middleware),
+        ]);
+
+        $adapter = new LazyMiddlewareAdapter($container, 'serviceId');
 
         self::assertSame($response, $adapter($request, $response, $next));
     }
