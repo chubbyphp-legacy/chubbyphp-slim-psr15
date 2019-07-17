@@ -15,6 +15,8 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 /**
  * @covers \Chubbyphp\SlimPsr15\LazyRequestHandlerAdapter
+ *
+ * @internal
  */
 final class LazyRequestHandlerAdapterTest extends TestCase
 {

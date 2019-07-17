@@ -14,6 +14,8 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 /**
  * @covers \Chubbyphp\SlimPsr15\RequestHandlerAdapter
+ *
+ * @internal
  */
 final class RequestHandlerAdapterTest extends TestCase
 {

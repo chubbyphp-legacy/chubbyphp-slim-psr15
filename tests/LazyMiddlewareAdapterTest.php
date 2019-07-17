@@ -17,6 +17,8 @@ use Psr\Http\Server\MiddlewareInterface;
 
 /**
  * @covers \Chubbyphp\SlimPsr15\LazyMiddlewareAdapter
+ *
+ * @internal
  */
 final class LazyMiddlewareAdapterTest extends TestCase
 {
@@ -33,9 +35,7 @@ final class LazyMiddlewareAdapterTest extends TestCase
         ]);
 
         $next = function (ServerRequestInterface $request, ResponseInterface $response) {
-            $response = $response->withHeader('X-Test', 'test');
-
-            return $response;
+            return $response->withHeader('X-Test', 'test');
         };
 
         /** @var MiddlewareInterface|MockObject $middleware */

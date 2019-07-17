@@ -13,6 +13,8 @@ use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * @covers \Chubbyphp\SlimPsr15\MiddlewareRequestHandlerAdapter
+ *
+ * @internal
  */
 final class MiddlewareRequestHandlerAdapterTest extends TestCase
 {
@@ -29,9 +31,7 @@ final class MiddlewareRequestHandlerAdapterTest extends TestCase
         ]);
 
         $next = function (ServerRequestInterface $request, ResponseInterface $response) {
-            $response = $response->withHeader('X-Test', 'test');
-
-            return $response;
+            return $response->withHeader('X-Test', 'test');
         };
 
         $adapter = new MiddlewareRequestHandlerAdapter($response, $next);
