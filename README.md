@@ -10,6 +10,8 @@
 
 ## Description
 
+*DEPRECATED*: Use Slim 4 instead, it got PSR15 support out of the box.
+
 A slim psr15 adapter for middleware and request handler.
 
 ## Requirements
