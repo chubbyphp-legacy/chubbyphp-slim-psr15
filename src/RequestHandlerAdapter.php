@@ -15,19 +15,11 @@ final class RequestHandlerAdapter
      */
     private $requestHandler;
 
-    /**
-     * @param RequestHandlerInterface $requestHandler
-     */
     public function __construct(RequestHandlerInterface $requestHandler)
     {
         $this->requestHandler = $requestHandler;
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function __invoke(ServerRequestInterface $request): ResponseInterface
     {
         return $this->requestHandler->handle($request);

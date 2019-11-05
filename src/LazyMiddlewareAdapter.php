@@ -21,23 +21,12 @@ final class LazyMiddlewareAdapter
      */
     private $serviceId;
 
-    /**
-     * @param ContainerInterface $container
-     * @param string             $serviceId
-     */
     public function __construct(ContainerInterface $container, string $serviceId)
     {
         $this->container = $container;
         $this->serviceId = $serviceId;
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     * @param ResponseInterface      $response
-     * @param callable               $next
-     *
-     * @return ResponseInterface
-     */
     public function __invoke(
         ServerRequestInterface $request,
         ResponseInterface $response,

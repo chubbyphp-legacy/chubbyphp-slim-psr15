@@ -21,21 +21,12 @@ final class LazyRequestHandlerAdapter
      */
     private $serviceId;
 
-    /**
-     * @param ContainerInterface $container
-     * @param string             $serviceId
-     */
     public function __construct(ContainerInterface $container, string $serviceId)
     {
         $this->container = $container;
         $this->serviceId = $serviceId;
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function __invoke(ServerRequestInterface $request): ResponseInterface
     {
         /** @var RequestHandlerInterface $requestHandler */

@@ -15,21 +15,11 @@ final class MiddlewareAdapter
      */
     private $middleware;
 
-    /**
-     * @param MiddlewareInterface $middleware
-     */
     public function __construct(MiddlewareInterface $middleware)
     {
         $this->middleware = $middleware;
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     * @param ResponseInterface      $response
-     * @param callable               $next
-     *
-     * @return ResponseInterface
-     */
     public function __invoke(
         ServerRequestInterface $request,
         ResponseInterface $response,

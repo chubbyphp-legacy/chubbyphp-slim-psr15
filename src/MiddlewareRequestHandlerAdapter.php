@@ -20,21 +20,12 @@ final class MiddlewareRequestHandlerAdapter implements RequestHandlerInterface
      */
     private $next;
 
-    /**
-     * @param ResponseInterface $response
-     * @param callable          $next
-     */
     public function __construct(ResponseInterface $response, callable $next)
     {
         $this->response = $response;
         $this->next = $next;
     }
 
-    /**
-     * @param ServerRequestInterface $request
-     *
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $next = $this->next;
